@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10元學院 | 服務規範與條款</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 20px 15px;
+        }
+
+        /* 響應式容器 */
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* 標題區塊 */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        /* 內容區塊佈局 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .section {
+            padding: 10px 0;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background: var(--accent-color);
+            margin-right: 12px;
+            border-radius: 3px;
+        }
+
+        /* 列表樣式 */
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        li::after {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* 重點文字 */
+        .highlight {
+            color: #d63031;
+            font-weight: 600;
+        }
+
+        .notice-box {
+            background: #fff9f1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 0.95rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* 頁尾 */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* 手機版響應式優化 (Media Queries) */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 25px 20px;
+                border-radius: 10px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.15rem;
+            }
+
+            li {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>10元學院 | 學員服務條款</h1>
+    </header>
+
+    <main class="grid">
+        <section class="section">
+            <h2>關於金幣與獎勵</h2>
+            <ul>
+                <li>加入學院並完成首次訊息回覆，即贈送 <span class="highlight">100 枚</span>金幣。</li>
+                <li>推薦獎勵：回覆訊息時註明介紹人名稱，雙方均可獲得金幣回饋。</li>
+                <li>金幣僅供提問折抵，不得兌換現金。</li>
+                <li><span class="highlight">效期提醒：</span>金幣有效期為 1 年，逾期將自動歸零。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>點數與兌換機制</h2>
+            <ul>
+                <li><strong>匯率：</strong>每 10 枚金幣可兌換 1 點；每 10 元現金可兌換 1 點。</li>
+                <li><strong>消耗：</strong>提問 1 個題目扣除 1 點。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>提問標準作業程序</h2>
+            <ul>
+                <li>採拍照上傳制，文字須工整清晰以利系統辨識。</li>
+                <li>嚴格遵守 <span class="highlight">一圖一題</span> 原則，不接受多題合照或一題分多圖。</li>
+                <li>待系統回覆當前問題後，方可發送下一個問題，請勿連續洗版。</li>
+                <div class="notice-box">
+                    ※ 若因違反規範（如一圖多題）導致辨識錯誤，點數將不予退還。
+                </div>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>解答準確性與保障</h2>
+            <ul>
+                <li>解答由 AI 產出，本院不負最終正確性責任，請學員斟酌參考。</li>
+                <li>如遇「未給解答卻扣點」或「內容嚴重錯誤」，請聯繫客服。</li>
+                <li>經核定後，誤扣之點數將全數退還。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>繳費與儲值說明</h2>
+            <ul>
+                <li>支援人工繳費（須核對識別證）及銀行轉帳。</li>
+                <li>儲值金額建議為 200、500、1000 或其整數倍。</li>
+                <li>單次儲值上限為 <span class="highlight">NT$ 10,000</span> 元。</li>
+                <li>轉帳後請告知日期、金額及帳號末 4 碼以利查核。</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>一般性法律條款</h2>
+            <ul>
+                <li>本規範自公告日起生效，學院保有隨時修正及最終解釋權。</li>
+                <li>本院保有拒絕提供服務或收受學員之權利。</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 10元學院 | 提升學習效率的最佳夥伴
+    </footer>
+</div>
+
+</body>
+</html>
