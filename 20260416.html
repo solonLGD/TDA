@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角形中線長度視覺化</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #f8fafc; }
+        canvas { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .control-panel { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold text-slate-800 mb-6 text-center">三角形中線長度探究</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-1 control-panel flex flex-col gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">夾角 ∠A: <span id="angleVal" class="text-blue-600 font-bold">120</span>°</label>
+                    <input type="range" id="angleSlider" min="10" max="170" value="120" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">邊長 AB: <span id="abVal" class="text-blue-600 font-bold">6</span></label>
+                    <input type="range" id="abSlider" min="1" max="20" step="0.5" value="6" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-2">邊長 AC: <span id="acVal" class="text-blue-600 font-bold">10</span></label>
+                    <input type="range" id="acSlider" min="1" max="20" step="0.5" value="10" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+                
+                <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <p class="text-sm font-semibold text-blue-800">計算結果：</p>
+                    <p class="text-sm text-blue-700 mt-1">BC 長度: <span id="bcResult" class="font-mono">14.00</span></p>
+                    <p class="text-sm text-blue-700">AE 長度: <span id="aeResult" class="font-bold font-mono">4.36 (√19 ≈ 4.36)</span></p>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 flex flex-col items-center">
+                <canvas id="geometryCanvas" width="500" height="400" class="w-full max-w-[500px]"></canvas>
+                <p class="text-slate-500 text-xs mt-4 italic">提示：藍色線段 AE 即為題目所求的中線。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('geometryCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        const angleSlider = document.getElementById('angleSlider');
+        const abSlider = document.getElementById('abSlider');
+        const acSlider = document.getElementById('acSlider');
+        
+        const angleVal = document.getElementById('angleVal');
+        const abVal = document.getElementById('abVal');
+        const acVal = document.getElementById('acVal');
+        
+        const bcResult = document.getElementById('bcResult');
+        const aeResult = document.getElementById('aeResult');
+
+        function draw() {
+            const A_deg = parseFloat(angleSlider.value);
+            const AB = parseFloat(abSlider.value);
+            const AC = parseFloat(acSlider.value);
+            
+            angleVal.innerText = A_deg;
+            abVal.innerText = AB;
+            acVal.innerText = AC;
+
+            const A_rad = (A_deg * Math.PI) / 180;
+            
+            // 計算 BC 平方: BC^2 = AB^2 + AC^2 - 2*AB*AC*cos(A)
+            const bcSq = AB*AB + AC*AC - 2*AB*AC*Math.cos(A_rad);
+            const BC = Math.sqrt(bcSq);
+            bcResult.innerText = BC.toFixed(2);
+
+            // 中線定理: AB^2 + AC^2 = 2(AE^2 + (BC/2)^2)
+            // AE = sqrt((AB^2 + AC^2)/2 - (BC/2)^2)
+            const aeSq = (AB*AB + AC*AC) / 2 - Math.pow(BC/2, 2);
+            const AE = Math.sqrt(aeSq);
+            aeResult.innerText = AE.toFixed(2) + (Math.abs(AE - Math.sqrt(19)) < 0.01 ? " (√19)" : "");
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // 坐標縮放
+            const scale = Math.min(canvas.width / 25, canvas.height / 25);
+            const offsetX = canvas.width / 2;
+            const offsetY = canvas.height / 2;
+
+            // 定義頂點
+            const Ax = 0, Ay = 0;
+            const Cx = AC * scale, Cy = 0;
+            const Bx = AB * Math.cos(Math.PI - A_rad) * -scale, By = AB * Math.sin(Math.PI - A_rad) * -scale;
+            
+            // 中點 E
+            const Ex = (Bx + Cx) / 2;
+            const Ey = (By + Cy) / 2;
+
+            // 繪圖平移到視覺中心
+            ctx.save();
+            ctx.translate(offsetX - (Cx + Bx)/4, offsetY - (By)/4);
+
+            // 畫三角形 ABC
+            ctx.beginPath();
+            ctx.moveTo(Ax, Ay);
+            ctx.lineTo(Bx, By);
+            ctx.lineTo(Cx, Cy);
+            ctx.closePath();
+            ctx.strokeStyle = '#334155';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // 畫中線 AE
+            ctx.setLineDash([5, 5]);
+            ctx.beginPath();
+            ctx.moveTo(Ax, Ay);
+            ctx.lineTo(Ex, Ey);
+            ctx.strokeStyle = '#2563eb';
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // 標註頂點
+            ctx.fillStyle = '#1e293b';
+            ctx.font = '16px Arial';
+            ctx.fillText('A', Ax - 15, Ay + 15);
+            ctx.fillText('B', Bx - 10, By - 10);
+            ctx.fillText('C', Cx + 5, Cy + 15);
+            ctx.fillStyle = '#2563eb';
+            ctx.fillText('E', Ex, Ey + 20);
+
+            // 點標記
+            [ {x:Ax, y:Ay}, {x:Bx, y:By}, {x:Cx, y:Cy}, {x:Ex, y:Ey} ].forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            ctx.restore();
+        }
+
+        [angleSlider, abSlider, acSlider].forEach(s => s.addEventListener('input', draw));
+        window.onload = draw;
+    </script>
+</body>
+</html>
