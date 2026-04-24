@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10元學院 | 服務規範與條款</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --warn-color: #e67e22;
+            --danger-color: #e74c3c;
+            --success-color: #27ae60;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 20px 10px;
+            letter-spacing: 0.05rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        section {
+            padding: 20px;
+            border: 1px solid #edf2f7;
+            border-radius: 12px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        section:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: var(--accent-color);
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "◆";
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 5px;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .highlight {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+
+        /* 提醒區塊樣式 */
+        .priority-box {
+            background: #fff5f5;
+            border: 1px dashed var(--danger-color);
+            padding: 12px 15px;
+            margin: 10px 0 15px 0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #c0392b;
+        }
+
+        .note-box {
+            background: #fdfaf0;
+            border-left: 4px solid #f1c40f;
+            padding: 12px 15px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            border-radius: 4px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #95a5a5;
+        }
+
+        /* 媒體查詢優化桌機版 */
+        @media (min-width: 600px) {
+            body { padding: 40px 15px; }
+            .container { padding: 50px; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.3rem; }
+            li { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>10元學院 服務使用規範</h1>
+        <p class="subtitle">為了保障您的學習權益，使用前請詳閱以下規範</p>
+    </header>
+
+    <main class="grid">
+        <section>
+            <h2>點數與扣款優先序</h2>
+            <div class="priority-box">
+                💡 系統將優先扣除「現金儲值點數」，待現金點數用罄後，方開始扣除「活動金幣」。
+            </div>
+            <ul>
+                <li><span class="tag">現金儲值</span> 每 10 元現金可兌換 1 點。</li>
+                <li><span class="tag">金幣兌換</span> 每 10 枚金幣可折抵 1 點。</li>
+                <li><span class="tag">消耗標準</span> 每提問一個題目扣除 1 點。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>金幣獲取與限制</h2>
+            <ul>
+                <li><strong>入會禮：</strong>新學員初次訊息回覆即贈送 <span class="highlight">100 枚</span>金幣。</li>
+                <li><strong>性質限制：</strong>金幣僅供提問折抵，不得要求兌換現金。</li>
+                <li><strong>有效期限：</strong>金幣有效期為 1 年，過期自動失效歸零。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>提問標準作業流程 (SOP)</h2>
+            <ul>
+                <li>僅接受拍照上傳，字跡務必工整清晰，以降低 AI 誤判率。</li>
+                <li>嚴格遵守<span class="highlight">「一圖一題」</span>原則，嚴禁一圖多題或單題拆分多圖。</li>
+                <li><strong>回覆時效：</strong>系統設定於 2 分鐘內回覆。若因忙碌超時未回覆，<span class="highlight">不會扣除點數</span>。</li>
+                <li>系統回覆前請勿連續發送提問，以維持處理效率。</li>
+                <li>若因違反上述拍照規範導致辨識錯誤，點數恕不退還。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>解答準確性與技術限制</h2>
+            <ul>
+                <li><strong>免責聲明：</strong>解答由 AI 自動產出，僅供參考。請學員務必自行多方查證，本院不負最終正確性責任。</li>
+                <li><strong>語文類限制：</strong>辨識技術具備自動校正功能，針對「特殊字、難字、更正錯別字」題型之錯誤率較高，請審慎評估。</li>
+                <li><strong>多選題限制：</strong>考量出題者主觀意圖與條件不同，答案易有歧異，請參考解答後自行思辨。</li>
+            </ul>
+            <div class="note-box">
+                ※ 若遇系統異常（如未給解答卻扣點），請立即聯繫客服核實退回。
+            </div>
+        </section>
+
+        <section>
+            <h2>儲值與繳費流程</h2>
+            <ul>
+                <li><strong>支付管道：</strong>提供人工繳費（須核對識別證）及銀行轉帳。</li>
+                <li><strong>建議金額：</strong>儲值金額以 <span class="highlight">1000 元</span>或其整倍數為佳。</li>
+                <li><strong>儲值上限：</strong>單次儲值最高限額 NT$ 10,000 元。</li>
+                <li><strong>轉帳回報：</strong>轉帳後請提供：<span class="highlight">識別碼、日期、金額、帳號末 4 碼</span>。</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>一般性規範</h2>
+            <ul>
+                <li>本規範自公告日起實施，本院保有最終解釋權。</li>
+                <li>本院保有隨時修正、調整或變更規範內容之權利。</li>
+                <li>本院保有是否收受學員及提供服務與否之最終決定權。</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 10元學院 | 專業 AI 學習輔導
+    </footer>
+</div>
+
+</body>
+</html>
